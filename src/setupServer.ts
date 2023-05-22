@@ -9,10 +9,14 @@ import HTTP_STATUS from 'http-status-codes';
 import { Server } from 'socket.io';
 import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
+import Logger from 'bunyan';
 import 'express-async-errors';
 import { config } from './config';
+import applicationRoutes from './routes';
+import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
 
 const SERVER_PORT = 5000;
+const log: Logger = config.createLogger('server');
 
 export class AppServer {
   private app: Application;
@@ -35,7 +39,7 @@ export class AppServer {
     app.use(
       cookieSession({
         name: 'session',
-        keys: [config.SECRET_KEY_ONE!,config.SECRET_KEY_TWO!],
+        keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
         maxAge: 24 * 7 * 3600000,
         secure: config.NODE_ENV !== 'development'
       })
@@ -58,12 +62,24 @@ export class AppServer {
     app.use(urlencoded({ extended: true, limit: '50mb' }));
   }
 
-  private routesMiddleware(app: Application): void {}
+  private routesMiddleware(app: Application): void {
+    applicationRoutes(app);
+  }
 
   private apiMonitoring(app: Application): void {}
 
   private globalErrorHandler(app: Application): void {
-    
+    app.all('*', (req: Request, res: Response) => {
+      res.status(HTTP_STATUS.NOT_FOUND).json({ message: `${req.originalUrl} not found` });
+    });
+
+    app.use((error: IErrorResponse, _req: Request, res: Response, next: NextFunction) => {
+      log.error(error);
+      if (error instanceof CustomError) {
+        return res.status(error.statusCode).json(error.serializeErrors());
+      }
+      next();
+    });
   }
 
   private async startServer(app: Application): Promise<void> {
@@ -73,7 +89,7 @@ export class AppServer {
       this.startHttpServer(httpServer);
       this.socketIOConnections(socketIO);
     } catch (error) {
-        console.log(error);
+      log.error(error);
     }
   }
 
@@ -92,13 +108,11 @@ export class AppServer {
   }
 
   private startHttpServer(httpServer: http.Server): void {
-    console.log(`Server has started with process ${process.pid}`);
+    log.info(`Server has started with process ${process.pid}`);
     httpServer.listen(SERVER_PORT, () => {
-      console.log(`Server running on port ${SERVER_PORT}`);
+      log.info(`Server running on port ${SERVER_PORT}`);
     });
   }
 
-  private socketIOConnections(io: Server): void {
-    
-  }
+  private socketIOConnections(io: Server): void {}
 }
