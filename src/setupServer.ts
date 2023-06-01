@@ -11,9 +11,9 @@ import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
 import Logger from 'bunyan';
 import 'express-async-errors';
-import { config } from './config';
-import applicationRoutes from './routes';
-import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
+import { config } from '@root/config';
+import applicationRoutes from '@root/routes';
+import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -29,7 +29,6 @@ export class AppServer {
     this.securityMiddleware(this.app);
     this.standardMiddleware(this.app);
     this.routesMiddleware(this.app);
-    this.apiMonitoring(this.app);
     this.globalErrorHandler(this.app);
     this.startServer(this.app);
   }
@@ -66,7 +65,7 @@ export class AppServer {
     applicationRoutes(app);
   }
 
-  private apiMonitoring(app: Application): void {}
+  //private apiMonitoring(app: Application): void {}
 
   private globalErrorHandler(app: Application): void {
     app.all('*', (req: Request, res: Response) => {
@@ -114,5 +113,7 @@ export class AppServer {
     });
   }
 
-  private socketIOConnections(io: Server): void {}
+  private socketIOConnections(io: Server): void {
+    log.info('socketconnections');
+  }
 }
