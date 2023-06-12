@@ -1,0 +1,93 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/all/1
+# GET {{baseUrl}}/{{urlPath}}/post/all/<page-number>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/images/1
+# GET {{baseUrl}}/{{urlPath}}/post/images/<page-number>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+POST {{baseUrl}}/{{urlPath}}/post
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+# Privacy - Public | Private | Followers
+# Feelings - like | love | wow | happy | sad | angry
+{
+  "post": "my fourth post",
+  "bgColor": "#4aa1f3",
+  "privacy": "Private",
+  "gifUrl": "",
+  "profilePicture": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70",
+  "feelings": ""
+}
+
+###
+POST {{baseUrl}}/{{urlPath}}/post/image/post
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "post": "post with image",
+  "bgColor": "#4aa1f3",
+  "privacy": "Public",
+  "gifUrl": "",
+  "profilePicture": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70",
+  "feelings": "",
+  "image": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTBweCIgaGVpZ2h0PSIzOXB4IiB2aWV3Qm94PSIwIDAgNTAgMzkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJXaVAiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTkwLjAwMDAwMCwgLTM4LjAwMDAwMCkiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkwLjAwMDAwMCwgMzguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlIiBmaWxsPSIjODA4MjgyIiBwb2ludHM9IjMgMTQgMjUgMjYuNSA0NyAxNCA0MC44NTUxNzYgMzkgOS4wODQyMTc4NSAzOSI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlRyaWFuZ2xlIiBmaWxsLW9wYWNpdHk9IjAuMjYyODM4NzI0IiBmaWxsPSIjMTAxQTFBIiBwb2ludHM9IjI1IDggNDAgMzkgMTAgMzkiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxjaXJjbGUgaWQ9Ik92YWwiIGZpbGw9IiM1RTYzNjMiIGN4PSIyIiBjeT0iOSIgcj0iMiI+PC9jaXJjbGU+CiAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsIiBmaWxsPSIjNUU2MzYzIiBjeD0iMjUiIGN5PSIyIiByPSIyIj48L2NpcmNsZT4KICAgICAgICAgICAgICAgIDxjaXJjbGUgaWQ9Ik92YWwiIGZpbGw9IiM1RTYzNjMiIGN4PSI0OCIgY3k9IjkiIHI9IjIiPjwvY2lyY2xlPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
+}
+
+###
+PUT {{baseUrl}}/{{urlPath}}/post/648221fb36e58124a5f8da19
+//PUT {{baseUrl}}/{{urlPath}}/post/<postId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true,
+
+{
+  "post": "post is updated",
+  "bgColor": "#4aa1f3",
+  "privacy": "Private",
+  "gifUrl": "",
+  "profilePicture": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70",
+  "feelings": "",
+  "imgId": "",
+  "imgVersion": ""
+}
+
+###
+PUT {{baseUrl}}/{{urlPath}}/post/image/648221fb36e58124a5f8da19
+//PUT {{baseUrl}}/{{urlPath}}/post/image/<postId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true,
+
+{
+  "post": "post with image",
+  "bgColor": "yellow",
+  "privacy": "Public",
+  "gifUrl": "",
+  "profilePicture": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70",
+  "feelings": "sad",
+  "imgId": "istwszqy5ttiknveymft",
+  "imgVersion": "1686482031",
+  "image": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTBweCIgaGVpZ2h0PSIzOXB4IiB2aWV3Qm94PSIwIDAgNTAgMzkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJXaVAiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTkwLjAwMDAwMCwgLTM4LjAwMDAwMCkiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkwLjAwMDAwMCwgMzguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlIiBmaWxsPSIjODA4MjgyIiBwb2ludHM9IjMgMTQgMjUgMjYuNSA0NyAxNCA0MC44NTUxNzYgMzkgOS4wODQyMTc4NSAzOSI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlRyaWFuZ2xlIiBmaWxsLW9wYWNpdHk9IjAuMjYyODM4NzI0IiBmaWxsPSIjMTAxQTFBIiBwb2ludHM9IjI1IDggNDAgMzkgMTAgMzkiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxjaXJjbGUgaWQ9Ik92YWwiIGZpbGw9IiM1RTYzNjMiIGN4PSIyIiBjeT0iOSIgcj0iMiI+PC9jaXJjbGU+CiAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsIiBmaWxsPSIjNUU2MzYzIiBjeD0iMjUiIGN5PSIyIiByPSIyIj48L2NpcmNsZT4KICAgICAgICAgICAgICAgIDxjaXJjbGUgaWQ9Ik92YWwiIGZpbGw9IiM1RTYzNjMiIGN4PSI0OCIgY3k9IjkiIHI9IjIiPjwvY2lyY2xlPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
+}
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/post/648221b536e58124a5f8da18
+//DELETE {{baseUrl}}/{{urlPath}}/post/<postId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
