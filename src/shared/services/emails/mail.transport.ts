@@ -16,7 +16,6 @@ const log: Logger = config.createLogger('mailOptions');
 sendGridMail.setApiKey(config.SENDGRID_API_KEY!);
 
 class MailTransport {
-
   public async sendEmail(receiverEmail: string, subject: string, body: string): Promise<void> {
     if (config.NODE_ENV === 'test' || config.NODE_ENV === 'development') {
       this.developmentEmailSender(receiverEmail, subject, body);
@@ -71,4 +70,3 @@ class MailTransport {
 }
 
 export const mailTransport: MailTransport = new MailTransport();
-
