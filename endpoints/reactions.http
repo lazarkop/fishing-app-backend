@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/reactions/64888fbcecf8671ce3701dea
+//GET {{baseUrl}}/{{urlPath}}/post/reactions/<postId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/single/reaction/username/manny/64888fbcecf8671ce3701dea
+//GET {{baseUrl}}/{{urlPath}}/post/single/reaction/username/<username-of-logged-in-user>/<postId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+GET {{baseUrl}}/{{urlPath}}/post/reactions/username/manny
+//GET {{baseUrl}}/{{urlPath}}/post/reactions/username/<username-of-logged-in-user>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+POST {{baseUrl}}/{{urlPath}}/post/reaction
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+# type - like | love | wow | happy | sad | angry
+# previousReaction (if it exist) - like | love | wow | happy | sad | angry
+# postReactions - increment new reaction by 1 and decrement previous reaction by 1
+
+{
+  "userTo": "64721d3c668e5c9a396e5f70",
+  "postId": "64888fbcecf8671ce3701dea",
+  "type": "happy",
+  "previousReaction": "",
+  "postReactions": {"like": 0,"love": 0,"happy": 1,"sad": 1,"wow": 0,"angry": 0},
+  "profilePicture": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70"
+}
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/post/reaction/64888fbcecf8671ce3701dea/sad/{"like": 0,"love": 0,"happy": 0,"sad": 0,"wow": 0,"angry": 0}
+//DELETE {{baseUrl}}/{{urlPath}}/post/reaction/<postId>/<previousReaction>/{"like": 0,"love": 0,"happy": 0,"sad": 0,"wow": 0,"angry": 0}
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{}
+

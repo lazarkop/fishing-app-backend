@@ -2,7 +2,6 @@ import { JoiRequestValidationError } from '@global/helpers/error-handler';
 import { NextFunction, Request } from 'express';
 import { ObjectSchema } from 'joi';
 
-
 type validateWithJoiDecoratorType<T> = (target: T, key: string, descriptor: PropertyDescriptor) => void;
 
 export function joiValidation<T>(schema: ObjectSchema): validateWithJoiDecoratorType<T> {
