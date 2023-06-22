@@ -5,11 +5,11 @@ import { PostModel } from '@post/models/post.schema';
 import mongoose, { Query } from 'mongoose';
 import { UserCache } from '@service/redis/user.cache';
 import { IUserDocument } from '@user/interfaces/user.interface';
-//import { NotificationModel } from '@notification/models/notification.schema';
-//import { INotificationDocument, INotificationTemplate } from '@notification/interfaces/notification.interface';
-//import { socketIONotificationObject } from '@socket/notification';
-//import { notificationTemplate } from '@service/emails/templates/notifications/notification-template';
-//import { emailQueue } from '@service/queues/email.queue';
+import { NotificationModel } from '@notification/models/notification.schema';
+import { INotificationDocument, INotificationTemplate } from '@notification/interfaces/notification.interface';
+import { socketIONotificationObject } from '@socket/notification';
+import { notificationTemplate } from '@service/emails/templates/notifications/notification-template';
+import { emailQueue } from '@service/queues/email.queue';
 
 const userCache: UserCache = new UserCache();
 
@@ -25,7 +25,7 @@ class CommentService {
     const user: Promise<IUserDocument> = userCache.getUserFromCache(userTo) as Promise<IUserDocument>;
     const response: [ICommentDocument, IPostDocument, IUserDocument] = await Promise.all([comments, post, user]);
 
-    /* if (response[2].notifications.comments && userFrom !== userTo) {
+    if (response[2].notifications.comments && userFrom !== userTo) {
       const notificationModel: INotificationDocument = new NotificationModel();
       const notifications = await notificationModel.insertNotification({
         userFrom,
@@ -50,7 +50,7 @@ class CommentService {
       };
       const template: string = notificationTemplate.notificationMessageTemplate(templateParams);
       emailQueue.addEmailJob('commentsEmail', { receiverEmail: response[2].email!, template, subject: 'Post notification' });
-    } */
+    }
   }
 
   public async getPostComments(query: IQueryComment, sort: Record<string, 1 | -1>): Promise<ICommentDocument[]> {

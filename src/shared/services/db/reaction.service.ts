@@ -7,11 +7,11 @@ import { UserCache } from '@service/redis/user.cache';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { omit } from 'lodash';
 import mongoose from 'mongoose';
-//import { INotificationDocument, INotificationTemplate } from '@notification/interfaces/notification.interface';
-//import { NotificationModel } from '@notification/models/notification.schema';
-//import { socketIONotificationObject } from '@socket/notification';
-//import { notificationTemplate } from '@service/emails/templates/notifications/notification-template';
-//import { emailQueue } from '@service/queues/email.queue';
+import { INotificationDocument, INotificationTemplate } from '@notification/interfaces/notification.interface';
+import { NotificationModel } from '@notification/models/notification.schema';
+import { socketIONotificationObject } from '@socket/notification';
+import { notificationTemplate } from '@service/emails/templates/notifications/notification-template';
+import { emailQueue } from '@service/queues/email.queue';
 
 const userCache: UserCache = new UserCache();
 
@@ -37,7 +37,7 @@ class ReactionService {
       )
     ])) as unknown as [IUserDocument, IReactionDocument, IPostDocument];
 
-    /* if (updatedReaction[0].notifications.reactions && userTo !== userFrom) {
+    if (updatedReaction[0].notifications.reactions && userTo !== userFrom) {
       const notificationModel: INotificationDocument = new NotificationModel();
       const notifications = await notificationModel.insertNotification({
         userFrom: userFrom as string,
@@ -66,7 +66,7 @@ class ReactionService {
         template,
         subject: 'Post reaction notification'
       });
-    } */
+    }
   }
 
   public async removeReactionDataFromDB(reactionData: IReactionJob): Promise<void> {
