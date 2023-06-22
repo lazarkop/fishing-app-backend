@@ -33,11 +33,11 @@ withCredentials: true
 # postReactions - increment new reaction by 1 and decrement previous reaction by 1
 
 {
-  "userTo": "64721d3c668e5c9a396e5f70",
-  "postId": "64888fbcecf8671ce3701dea",
+  "userTo": "6489d842d587366768cb94f0",
+  "postId": "6491ca04a0ecaf33fc345aa5",
   "type": "happy",
   "previousReaction": "",
-  "postReactions": {"like": 0,"love": 0,"happy": 1,"sad": 1,"wow": 0,"angry": 0},
+  "postReactions": {"like": 0,"love": 0,"happy": 1,"sad": 0,"wow": 0,"angry": 0},
   "profilePicture": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70"
 }
 

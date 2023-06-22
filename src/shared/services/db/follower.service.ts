@@ -5,10 +5,10 @@ import mongoose, { Query } from 'mongoose';
 import { IFollowerData, IFollowerDocument } from '@follower/interfaces/follower.interface';
 import { IQueryDeleted, IQueryComplete } from '@post/interfaces/post.interface';
 import { IUserDocument } from '@user/interfaces/user.interface';
-/* import { INotificationDocument, INotificationTemplate } from '@notification/interfaces/notification.interface';
+import { INotificationDocument, INotificationTemplate } from '@notification/interfaces/notification.interface';
 import { NotificationModel } from '@notification/models/notification.schema';
 import { socketIONotificationObject } from '@socket/notification';
-import { notificationTemplate } from '@service/emails/templates/notifications/notification-template'; */
+import { notificationTemplate } from '@service/emails/templates/notifications/notification-template';
 import { emailQueue } from '@service/queues/email.queue';
 import { UserCache } from '@service/redis/user.cache';
 import { map } from 'lodash';
@@ -43,7 +43,7 @@ class FollowerService {
 
     const response: [BulkWriteResult, IUserDocument | null] = await Promise.all([users, userCache.getUserFromCache(followeeId)]);
 
-    /* if (response[1]?.notifications.follows && userId !== followeeId) {
+    if (response[1]?.notifications.follows && userId !== followeeId) {
       const notificationModel: INotificationDocument = new NotificationModel();
       const notifications = await notificationModel.insertNotification({
         userFrom: userId,
@@ -72,7 +72,7 @@ class FollowerService {
         template,
         subject: `${username} is now following you.`
       });
-    } */
+    }
   }
 
   public async removeFollowerFromDB(followeeId: string, followerId: string): Promise<void> {
