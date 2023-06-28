@@ -66,10 +66,10 @@ export class Add {
   }
 
   private async backgroundUpload(image: string): Promise<IBgUploadResponse> {
-    const isDataBase64String = Helpers.isDataBase64String(image);
+    const isDataURL = Helpers.isDataURL(image);
     let version = '';
     let publicId = '';
-    if (isDataBase64String) {
+    if (isDataURL) {
       const result: UploadApiResponse = (await uploads(image)) as UploadApiResponse;
       if (!result.public_id) {
         throw new BadRequestError(result.message);

@@ -28,7 +28,6 @@ Object.defineProperties(chatServer, {
 
 describe('Add', () => {
   beforeEach(() => {
-    //jest.spyOn(UserCache.prototype, 'getUserFromCache').mockResolvedValue(existingUser);
     jest.restoreAllMocks();
   });
 
