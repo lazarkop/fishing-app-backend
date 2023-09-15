@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+GET {{baseUrl}}/{{urlPath}}/images/64721d3c668e5c9a396e5f70
+//GET {{baseUrl}}/{{urlPath}}/images/<userId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+POST {{baseUrl}}/{{urlPath}}/images/profile
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "image": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTBweCIgaGVpZ2h0PSIzOXB4IiB2aWV3Qm94PSIwIDAgNTAgMzkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUzLjIgKDcyNjQzKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cDwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJXaVAiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTkwLjAwMDAwMCwgLTM4LjAwMDAwMCkiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkwLjAwMDAwMCwgMzguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUmVjdGFuZ2xlIiBmaWxsPSIjODA4MjgyIiBwb2ludHM9IjMgMTQgMjUgMjYuNSA0NyAxNCA0MC44NTUxNzYgMzkgOS4wODQyMTc4NSAzOSI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlRyaWFuZ2xlIiBmaWxsLW9wYWNpdHk9IjAuMjYyODM4NzI0IiBmaWxsPSIjMTAxQTFBIiBwb2ludHM9IjI1IDggNDAgMzkgMTAgMzkiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxjaXJjbGUgaWQ9Ik92YWwiIGZpbGw9IiM1RTYzNjMiIGN4PSIyIiBjeT0iOSIgcj0iMiI+PC9jaXJjbGU+CiAgICAgICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsIiBmaWxsPSIjNUU2MzYzIiBjeD0iMjUiIGN5PSIyIiByPSIyIj48L2NpcmNsZT4KICAgICAgICAgICAgICAgIDxjaXJjbGUgaWQ9Ik92YWwiIGZpbGw9IiM1RTYzNjMiIGN4PSI0OCIgY3k9IjkiIHI9IjIiPjwvY2lyY2xlPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
+}
+
+###
+POST {{baseUrl}}/{{urlPath}}/images/background
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+# For this endpoint, image value is either
+# - a base64 encoded string for a new image or
+# - an already existing cloudinary image url
+
+{
+  "image": "https://res.cloudinary.com/dbwuwe27s/image/upload/v1685200189/64721d3c668e5c9a396e5f70"
+}
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/images/649464cbacaf4c90f6efe909
+//DELETE {{baseUrl}}/{{urlPath}}/images/<imageId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/images/background/64721d3c668e5c9a396e5f70
+//DELETE {{baseUrl}}/{{urlPath}}/images/background/<bgImageId>
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
