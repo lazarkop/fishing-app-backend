@@ -5,3 +5,4 @@
 ## 3. Redis
 ## 4. Cloudinary API (for image uploads)
 ## 5. SocketIO
+## 6. Jest
