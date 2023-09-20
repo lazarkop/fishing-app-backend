@@ -1,4 +1,4 @@
-# Main technologies used:
+## Main technologies used:
 
 ## 1. NodeJS
 ## 2. MongoDB
